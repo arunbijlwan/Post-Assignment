@@ -1,0 +1,14 @@
+In this scenerio we use rolling update features inwhich upgrade the pod with new image version with overlapping old pods .
+
+Steps:
+
+1.WE increase mrs value(minimum ready seconds) it is value default set as '0' so we set as '10' via following command,mrs value responsible for newly pod ready statement
+kubectl patch deployment kubia -p '{"spec": {"minReadySeconds": 10}}'
+kubectl explain deploy.spec.minReadySeconds(now check it is done)
+
+2.Second step we upgrade version via following command(it upgrade where container image nodejs)
+
+kubectl set image deployment kubia nodejs=luksa/kubia:v2
+
+
+3.Now we check podip:portnumber ----> gui output 
